@@ -19,7 +19,7 @@ def sumar_elementos(mano):
     else:
         return mano[0]+sumar_elementos(mano[1:])
    
-def comparar(mano, mano casa):
+def comparar(mano, manoCasa):
     if (sumar_elementos(mano)<21):
         for j in mano:
             if(j==1):
@@ -27,18 +27,18 @@ def comparar(mano, mano casa):
                     print ("La suma es 21 GANO!")
                     
                 
-        print ("La suma de sus cartas es: ",sumar_elementos(mano)," Desea continuar? (S/N)")
-        if(input()=='S'):
+        print ("La suma de sus cartas es: ",sumar_elementos(mano)," Digite 1 si desea otra carta. si no 2 ")
+        if(input()==1):
             comparar(repartir(mano),manoCasa)
         else:
-            compararCasa(sumar_elementos(mano))
+            compararCasa(mano ,manoCasa)
     elif (sumar_elementos(mano)==21):
         print("Ha completado 21, gano")
     elif (sumar_elementos(mano)>21):
         print ("La suma de sus cartas es: ",sumar_elementos(mano)," Se ha pasado de 21, perdio")
 
 def compararCasa(mano, manoCasa):
-    if (sumar_elementos(mano)<21):
+    if (sumar_elementos(mano) < 21):
         for j in mano:
             if(j==1):
                 if (sumar_elementos(mano)+10==21):
@@ -46,7 +46,7 @@ def compararCasa(mano, manoCasa):
                     
                 
         print ("La suma de sus cartas es: ",sumar_elementos(mano)," Entragando una carta mas")
-        comparar(repartir(mano))
+        comparar(repartir(mano),manoCasa)
     elif (sumar_elementos(mano)==21):
         print("Ha completado 21, gano")
     elif (sumar_elementos(mano)>21):
